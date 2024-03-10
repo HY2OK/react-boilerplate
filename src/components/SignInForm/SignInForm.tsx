@@ -1,6 +1,29 @@
+import { ChangeEvent, FormEvent, useState } from 'react'
+import { useAppDispatch } from '../../app/hooks'
+import { signIn } from '../../features/user/userSlice'
+
 const SignInForm = () => {
+  const dispatch = useAppDispatch()
+  const [userInfo, setUserInfo] = useState({
+    email: '',
+    password: '',
+  })
+
+  const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
+    setUserInfo((user) => ({
+      ...user,
+      [e.target.name]: e.target.value,
+    }))
+  }
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const { email, password } = userInfo
+    dispatch(signIn({ email, password }))
+  }
+
   return (
-    <form className="flex flex-col gap-4">
+    <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
       <h1 className="text-center mb-5 text-2xl uppercase">Sign In</h1>
 
       <div>
@@ -10,6 +33,8 @@ const SignInForm = () => {
           type="email"
           name="email"
           placeholder="email"
+          value={userInfo.email}
+          onChange={handleInput}
         />
       </div>
       <div>
@@ -19,6 +44,8 @@ const SignInForm = () => {
           type="password"
           name="password"
           placeholder="password"
+          value={userInfo.password}
+          onChange={handleInput}
         />
       </div>
 

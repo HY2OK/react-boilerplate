@@ -9,10 +9,13 @@ const MainPage = () => {
   }
 
   return (
-    <div>
-      MainPage
+    <div className="h-full flex justify-center items-center flex-col gap-5">
+      <h1 className="text-3xl">MainPage</h1>
       <div>
-        <button className="bg-slate-500 text-white" onClick={handleSignOut}>
+        <button
+          className="px-10 py-2 rounded-md text-xl bg-red-500 text-white"
+          onClick={handleSignOut}
+        >
           logout
         </button>
       </div>
