@@ -9,7 +9,7 @@ const SignPage = () => {
     <div className="h-full flex justify-center items-center flex-col gap-12">
       {hasAccount ? (
         <>
-          <SignUpForm setHasAccount={setHasAccount} />
+          <SignUpForm />
           <div
             className="text-blue-500 cursor-pointer"
             onClick={() => setHasAccount(false)}

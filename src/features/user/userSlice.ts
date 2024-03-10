@@ -4,8 +4,8 @@ import {
   getAuth,
   signInWithEmailAndPassword,
 } from 'firebase/auth'
-import firebase from 'firebase/compat/app'
 import app from '../../firebase'
+import firebase from 'firebase/compat/app'
 
 interface AuthState {
   user: firebase.User | null
@@ -24,8 +24,8 @@ export const signUp = createAsyncThunk(
   async ({ email, password }: { email: string; password: string }) => {
     try {
       const auth = getAuth(app)
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password)
-      console.log(userCredential)
+      const res = await createUserWithEmailAndPassword(auth, email, password)
+      console.log(res)
     } catch (error) {
       console.log(error)
     }
@@ -37,8 +37,8 @@ export const signIn = createAsyncThunk(
   async ({ email, password }: { email: string; password: string }) => {
     try {
       const auth = getAuth(app)
-      const userCredential = await signInWithEmailAndPassword(auth, email, password)
-      console.log(userCredential)
+      const res = await signInWithEmailAndPassword(auth, email, password)
+      console.log(res)
     } catch (error) {
       console.log(error)
     }

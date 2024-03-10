@@ -1,13 +1,10 @@
-import { ChangeEvent, Dispatch, FormEvent, SetStateAction, useState } from 'react'
+import { ChangeEvent, FormEvent, useState } from 'react'
 import { signUp } from '../../features/user/userSlice'
-import { useAppDispatch } from '../../app/hooks'
+import { useAppDispatch, useAppSelector } from '../../app/hooks'
 
-type SignUpFormProps = {
-  setHasAccount: Dispatch<SetStateAction<boolean>>
-}
-
-const SignUpForm: React.FC<SignUpFormProps> = ({ setHasAccount }) => {
+const SignUpForm = () => {
   const dispatch = useAppDispatch()
+  const user = useAppSelector((state) => state.user)
 
   const [userInfo, setUserInfo] = useState({
     email: '',
@@ -32,11 +29,9 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ setHasAccount }) => {
     }
 
     dispatch(signUp({ email, password }))
-      .then((res) => {
-        if (res.meta.requestStatus === 'fulfilled') setHasAccount((prev) => !prev)
-      })
-      .catch((error) => console.log(error))
   }
+
+  console.log(user)
 
   return (
     <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
