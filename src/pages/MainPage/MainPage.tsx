@@ -1,7 +1,11 @@
+import { getAuth } from 'firebase/auth'
 import { useAppDispatch } from '../../app/hooks'
 import { signOut } from '../../features/user/userSlice'
+import app from '../../firebase'
 
 const MainPage = () => {
+  const auth = getAuth(app)
+  console.log(auth)
   const dispatch = useAppDispatch()
 
   const handleSignOut = () => {
