@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
-import { useAppDispatch } from '../../app/hooks'
-import { signIn } from '../../features/user/userSlice'
+import { useAppDispatch } from '../../redux/hooks'
+import { signIn } from '../../redux/features/user/userSlice'
 
 const SignInForm = () => {
   const dispatch = useAppDispatch()

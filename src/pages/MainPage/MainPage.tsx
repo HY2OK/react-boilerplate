@@ -1,6 +1,6 @@
 import { getAuth } from 'firebase/auth'
-import { useAppDispatch } from '../../app/hooks'
-import { signOut } from '../../features/user/userSlice'
+import { useAppDispatch } from '../../redux/hooks'
+import { signOut } from '../../redux/features/user/userSlice'
 import app from '../../firebase'
 
 const MainPage = () => {

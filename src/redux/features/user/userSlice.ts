@@ -4,7 +4,7 @@ import {
   getAuth,
   signInWithEmailAndPassword,
 } from 'firebase/auth'
-import app from '../../firebase'
+import app from '../../../firebase'
 import firebase from 'firebase/compat/app'
 
 interface AuthState {
